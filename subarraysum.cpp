@@ -1,33 +1,14 @@
-#include<iostream>
-#include<map>
-using namespace std;
-int main(){
-	int t;
-	cin>>t;
-	while(t--){
-	
-	int x;
-	cin>>x;
-	int arr[x];
-	map<int,int> m;
-	for(int i=0;i<x;i++){
-		cin>>arr[i];
-		m[arr[i]]++;
-	}
-	int count=0;
-	int k=1;
-	while(1){
-		if(m[k]>=1){
-			count++;
-			k++;
-		}
-		else{
-			break;
-		}
-		
-	}
-	cout<<count;
-	cout<<endl;
+#include <algorithm>
+int Solution::maxSubArray(const vector<int> &A) {
+    int max_so_far = A[0]; 
+    int curr_max = A[0]; 
+  
+   for (int i = 1; i < A.size(); i++) 
+   { 
+        curr_max = max(A[i], curr_max+A[i]); 
+        max_so_far = max(max_so_far, curr_max); 
+   }
+   return max_so_far; 
 }
-	return 0;
-}
+
+
